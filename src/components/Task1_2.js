@@ -4,10 +4,13 @@ import useImage from "use-image";
 
 export const Task1_2 = () => {
 
-    const [ranpos, setRanPos] = React.useState([])
-    const pos = {x:"",y:""}
-    const [posi, setPosi] = React.useState(pos)
-    const [posx, setPosx] = React.useState([])
+    // const [ranpos, setRanPos] = React.useState([])
+    // const pos = {x:"",y:""}
+    // const [posi, setPosi] = React.useState(pos)
+    const [posxString, setPosxString] = React.useState('')
+    const posx = []
+    const [posyString, setPosyString] = React.useState('');
+    const posy = [];
 
     const RiceImage = () => {
         const [image] = useImage(
@@ -21,39 +24,59 @@ export const Task1_2 = () => {
           />
         );
     };
-    const RandomPos = () => {
-        const minx = 0
-        const miny = 0
-        const maxx = 360
-        const maxy = 438
-        for (let index = 0; index < 50; index++) {
-           var randx = Math.floor(minx + Math.random() * (maxx - minx));
-           var randy = Math.floor(miny + Math.random() * (maxy - miny));
-           console.log(index,randx,randy);
-        }
-        setRanPos(...ranpos, pos) 
-    };
+    // const RandomPos = () => {
+    //     const minx = 0
+    //     const miny = 0
+    //     const maxx = 360
+    //     const maxy = 438
+    //     for (let index = 0; index < 50; index++) {
+    //        var randx = Math.floor(minx + Math.random() * (maxx - minx));
+    //        var randy = Math.floor(miny + Math.random() * (maxy - miny));
+    //        console.log(index,randx,randy);
+    //     }
+    //     setRanPos(...ranpos, pos) 
+    // };
 
-    const sort = () => {
+    const sortx = () => {
         const minx = 0;
         const maxx = 360;
         for (let index = 0; index < 10; index++) {
-            var randx = Math.floor(minx + Math.random() * (maxx - minx));
+            let randx = Math.floor(minx + Math.random() * (maxx - minx));
             console.log(index, randx);
-            setPosx(...posx, randx)
+            posx.push(randx)
         }
-        console.log(posx)
+        setPosxString(posx.join())
+        console.log('x',posx.join())
+        console.log(posxString)
+
     }
+
+    const sorty = () => {
+        const miny = 0;
+        const maxy = 438;
+        for (let index = 0; index < 10; index++) {
+          let randy = Math.floor(miny + Math.random() * (maxy - miny));
+          console.log(index, randy);
+          posy.push(randy);
+        }
+        setPosyString(posy.join());
+        console.log("y", posy.join());
+        console.log(posyString);
+    };
 
     return (
       <div>
-        <button onClick={sort}>random</button>
-        {[posx]}
-        {/* <Stage width={window.innerWidth} height={window.innerHeight}>
+        <button onClick={sortx}>random x </button>
+        <button onClick={sorty}>random y </button>
+        <p>#Debug {JSON.stringify({ posx })}</p>
+        <div>{posxString}</div>
+        <div>{posyString}</div>
+        <Stage width={window.innerWidth} height={window.innerHeight}>
           <Layer>
             <RiceImage />
+            <Circle x={226} y={100} radius={25} stroke="yellow" />
           </Layer>
-        </Stage> */}
+        </Stage>
       </div>
     );
 }
