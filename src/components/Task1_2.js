@@ -8,8 +8,8 @@ export const Task1_2 = () => {
     // const pos = {x:'',y:''}
     // const [posi, setPosi] = React.useState(pos)
     const [posxString, setPosxString] = React.useState([])
-    // const [posyString, setPosyString] = React.useState(['']);
-    // const posy = [];
+    const [posyString, setPosyString] = React.useState([]);
+    
 
     const RiceImage = () => {
         const [image] = useImage(
@@ -23,6 +23,7 @@ export const Task1_2 = () => {
           />
         );
     };
+
     // const RandomPos = () => {
     //     const minx = 0
     //     const miny = 0
@@ -36,9 +37,9 @@ export const Task1_2 = () => {
     //     setRanPos(...ranpos, pos) 
     // };
 
-    // ดูตรง sortx นะ เพราะจะลองใส่แบบค่าเดียวก่อน
+    //// ดูตรง sortx นะ เพราะจะลองใส่แบบค่าเดียวก่อน
 
-    const sortx = () => {
+    const sortXY = () => {
         let posx = [];
         const minx = 0;
         const maxx = 360;
@@ -50,43 +51,45 @@ export const Task1_2 = () => {
         }
         setPosxString(posx);
         console.log('x',posx.join())
-        console.log(typeof posx)
+        // console.log(typeof posx)
         console.log(posxString)
-
+        let posy = [];
+        const miny = 0;
+        const maxy = 438;
+        for (let index = 0; index < 50; index++) {
+          let randy = Math.floor(miny + Math.random() * (maxy - miny));
+          console.log(index, randy);
+          posy.push(randy);
+        }
+        setPosyString(posy);
+        console.log("y", posy.join());
+        console.log(posyString);
     }
 
-    // const sorty = () => {
-    //     const miny = 0;
-    //     const maxy = 438;
-    //     for (let index = 0; index < 10; index++) {
-    //       let randy = Math.floor(miny + Math.random() * (maxy - miny));
-    //       console.log(index, randy);
-    //       posy.push(randy);
-    //     }
-    //     setPosyString(posy);
-    //     console.log("y", posy.join());
-    //     console.log(posyString);
+    const renderPosx = (data) => {
+      return data.map((item, i) => <li key={i}>{item}</li>);
+    };
+    const renderPosy = (data) => {
+      return data.map((item, i) => <li key={i}>{item}</li>);
+    };
+    // const renderPosxCirclle = (data) => {
+    //   return data.map((item, i) => <Circle key={i} x={item} y={300} stroke="yellow"></Circle>);
     // };
 
     return (
       <div>
-        <button onClick={sortx}>random x </button>
-        {/* <button onClick={sorty}>random y </button> */}
-        <div>{posxString}</div>
-        {/* <div>{posyString}</div> */}
+        <button onClick={sortXY}>random x </button>
+        <div style={{ display: "flex" }}>
+          <ul> x {renderPosx(posxString)}</ul>
+          <ul> y {renderPosy(posyString)}</ul>
+        </div>
         <Stage width={window.innerWidth} height={window.innerHeight}>
           <Layer>
             <RiceImage />
-
-            <Circle x={226} y={100} radius={25} stroke="yellow" />
+            <Circle x={200} y={100} radius={25} stroke="yellow" />
+            {/* {renderPosxCirclle(posxString)} */}
           </Layer>
         </Stage>
-        {/* map here  */}
-        <ul>
-          {posxString.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
       </div>
     );
 }
