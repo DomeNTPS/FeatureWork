@@ -1,6 +1,7 @@
 import React from 'react'
 import { Stage, Layer, Circle, Image } from "react-konva";
 import useImage from "use-image";
+import { render } from '@testing-library/react';
 
 export const Task1_2 = () => {
 
@@ -8,7 +9,6 @@ export const Task1_2 = () => {
     // const pos = {x:'',y:''}
     // const [posi, setPosi] = React.useState(pos)
     const [posxString, setPosxString] = React.useState([])
-    const posx = []
     // const [posyString, setPosyString] = React.useState(['']);
     // const posy = [];
 
@@ -42,15 +42,17 @@ export const Task1_2 = () => {
     const sortx = () => {
         const minx = 0;
         const maxx = 360;
+        let posx = []
         for (let index = 0; index < 50; index++) {
             let randx = Math.floor(minx + Math.random() * (maxx - minx));
-            console.log(index, randx);
+            // console.log(index, randx);
             posx.push(randx)
         }
+        console.log(posx)
         setPosxString(posx)
-        console.log('x',posx.join())
-        console.log(typeof posx)
-        console.log(typeof posxString)
+        // console.log('x',posx.join())
+        // console.log(typeof posx)
+        // console.log(typeof posxString)
 
     }
 
@@ -66,7 +68,10 @@ export const Task1_2 = () => {
     //     console.log("y", posy.join());
     //     console.log(posyString);
     // };
-
+    const renderPosx = (data)=>{
+      return (data.map((item, i) => (<li key={i}>{item}</li>)
+      ))
+    }
     return (
       <div>
         <button onClick={sortx}>random x </button>
@@ -81,11 +86,9 @@ export const Task1_2 = () => {
           </Layer>
         </Stage>
         {/* map here  */}
-        {/* <ul>
-          {posxString.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul> */}
+        <ul>
+          {renderPosx(posxString)}
+        </ul>
       </div>
     );
 }
