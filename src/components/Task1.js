@@ -4,9 +4,10 @@ import Slider from "@material-ui/core/Slider";
 
 export const Task1 = () => {
 
-    const [value1, setValue] = useState([1, 4]);
+    const [value1, setValue] = useState([0, 10]);
     const handleChange = (event, newValue) => {
       setValue(newValue);
+      console.log(newValue)
     };
 
     return (
@@ -23,9 +24,10 @@ export const Task1 = () => {
             defaultValue={10}
             mix={0.0}
             max={10.0}
-            step={0.1}
+            step={0.01}
           />
         </div>
+        {value1}
       </div>
     );
 }
