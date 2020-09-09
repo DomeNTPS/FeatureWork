@@ -1,16 +1,16 @@
 import React from 'react'
-import { Stage, Layer, Circle, Image, Ellipse } from "react-konva";
+import { Stage, Layer, Circle, Image } from "react-konva";
 import useImage from "use-image";
 
 export const Task1_2 = () => {
 
     // const [ranpos, setRanPos] = React.useState([])
-    // const pos = {x:"",y:""}
+    // const pos = {x:'',y:''}
     // const [posi, setPosi] = React.useState(pos)
-    const [posxString, setPosxString] = React.useState('')
+    const [posxString, setPosxString] = React.useState([])
     const posx = []
-    const [posyString, setPosyString] = React.useState('');
-    const posy = [];
+    // const [posyString, setPosyString] = React.useState(['']);
+    // const posy = [];
 
     const RiceImage = () => {
         const [image] = useImage(
@@ -37,46 +37,55 @@ export const Task1_2 = () => {
     //     setRanPos(...ranpos, pos) 
     // };
 
+    // ดูตรง sortx นะ เพราะจะลองใส่แบบค่าเดียวก่อน
+
     const sortx = () => {
         const minx = 0;
         const maxx = 360;
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 50; index++) {
             let randx = Math.floor(minx + Math.random() * (maxx - minx));
             console.log(index, randx);
             posx.push(randx)
         }
-        setPosxString(posx.join())
+        setPosxString(posx)
         console.log('x',posx.join())
-        console.log(posxString)
+        console.log(typeof posx)
+        console.log(typeof posxString)
 
     }
 
-    const sorty = () => {
-        const miny = 0;
-        const maxy = 438;
-        for (let index = 0; index < 10; index++) {
-          let randy = Math.floor(miny + Math.random() * (maxy - miny));
-          console.log(index, randy);
-          posy.push(randy);
-        }
-        setPosyString(posy.join());
-        console.log("y", posy.join());
-        console.log(posyString);
-    };
+    // const sorty = () => {
+    //     const miny = 0;
+    //     const maxy = 438;
+    //     for (let index = 0; index < 10; index++) {
+    //       let randy = Math.floor(miny + Math.random() * (maxy - miny));
+    //       console.log(index, randy);
+    //       posy.push(randy);
+    //     }
+    //     setPosyString(posy);
+    //     console.log("y", posy.join());
+    //     console.log(posyString);
+    // };
 
     return (
       <div>
         <button onClick={sortx}>random x </button>
-        <button onClick={sorty}>random y </button>
-        <p>#Debug {JSON.stringify({ posx })}</p>
+        {/* <button onClick={sorty}>random y </button> */}
         <div>{posxString}</div>
-        <div>{posyString}</div>
+        {/* <div>{posyString}</div> */}
         <Stage width={window.innerWidth} height={window.innerHeight}>
           <Layer>
             <RiceImage />
+
             <Circle x={226} y={100} radius={25} stroke="yellow" />
           </Layer>
         </Stage>
+        {/* map here  */}
+        {/* <ul>
+          {posxString.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul> */}
       </div>
     );
 }
