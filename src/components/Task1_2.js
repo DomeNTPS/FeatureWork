@@ -6,7 +6,7 @@ export const Task1_2 = () => {
 
     // const [ranpos, setRanPos] = React.useState([])
     let pos = {x:0,y:0,weightps:0}
-    const [posi, setPosi] = React.useState(pos)
+    const [posi, setPosi] = React.useState([pos])
     const [posxString, setPosxString] = React.useState([])
     const [posyString, setPosyString] = React.useState([])
     const [weight, setWeight] = React.useState([])
@@ -23,23 +23,6 @@ export const Task1_2 = () => {
           />
         );
     };
-
-    // const RiceCircle = () => {
-    //     return <Circle x={300} y={100} radius={25} stroke="yellow" />;
-    // }
-    // const RiceCircle2 = () => {
-
-    //   for (let index = 0; index < 50; index++) {
-    //     return (
-    //       <Circle
-    //         x={index}
-    //         y={100}
-    //         radius={25}
-    //         stroke="yellow"
-    //       />
-    //     );
-    //   }
-    // };
 
     const randomXYW = () => {
         let posx = []; 
@@ -90,15 +73,12 @@ export const Task1_2 = () => {
     const renderPos = (data) => {
       return data.map((item, i) => <li key={i}>{item}</li>);
     };
-    const renderPosx = (data) => {
+    const renderCircle = (data) => {
       return data.map((item, i) => (
         <Circle x={item} y={item} radius={25} stroke="yellow" key={i}/>
-          
       ));
     };
-    // const renderPosxCirclle = (data) => {
-    //   return data.map((item, i) => <Circle key={i} x={item} y={300} stroke="yellow"></Circle>);
-    // };
+    
 
     return (
       <div>
@@ -111,10 +91,18 @@ export const Task1_2 = () => {
         <Stage width={window.innerWidth} height={window.innerHeight}>
           <Layer>
             <RiceImage />
-            {/* <Circle x={200} y={100} radius={25} stroke="yellow" /> */}
-            {/* <RiceCircle2 /> */}
-            {renderPosx(posxString)}
-            
+            {renderCircle(posxString)}
+            {/* problem -------------------------------
+            {posi.map((item, i) => (
+              <Circle
+                x={item.x}
+                y={300}
+                radius={25}
+                stroke="yellow"
+                key={i}
+              />
+            ))}
+            -------------------------------------------------- */}
           </Layer>
         </Stage>
       </div>
