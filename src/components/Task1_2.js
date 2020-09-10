@@ -34,7 +34,6 @@ export const Task1_2 = () => {
             posx.push(randx)
         }
         setPosxString(posx);
-        setPosi(posi.x = posxString)
         console.log('x',posx.join())
         console.log(posi.x,'x')
         // console.log(posxString)
@@ -48,7 +47,6 @@ export const Task1_2 = () => {
           posy.push(randy);
         }
         setPosyString(posy);
-        setPosi(posi.y = posyString);
         console.log(posi.y, "y");
         // console.log("y", posy.join());
         // console.log(posyString);
@@ -62,11 +60,18 @@ export const Task1_2 = () => {
           wg.push(ranWg);
         }
         setWeight(wg);
-        setPosi((posi.weightps = weight));
         // console.log(weight)
         // console.log(wg, 'kg')
         console.log(posi.weightps);
         //-------------------------
+        let tempPosition = [];
+        posx.map((posXData, idx) => {
+          tempPosition.push({
+            x: posXData,
+            y: posy[idx],
+            weight: wg[idx],
+          });
+        });
         console.log(posi)
     }
 
