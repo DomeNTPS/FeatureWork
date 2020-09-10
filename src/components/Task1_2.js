@@ -24,6 +24,23 @@ export const Task1_2 = () => {
         );
     };
 
+    // const RiceCircle = () => {
+    //     return <Circle x={300} y={100} radius={25} stroke="yellow" />;
+    // }
+    // const RiceCircle2 = () => {
+
+    //   for (let index = 0; index < 50; index++) {
+    //     return (
+    //       <Circle
+    //         x={index}
+    //         y={100}
+    //         radius={25}
+    //         stroke="yellow"
+    //       />
+    //     );
+    //   }
+    // };
+
     const randomXYW = () => {
         let posx = []; 
         const minx = 0;
@@ -73,6 +90,12 @@ export const Task1_2 = () => {
     const renderPos = (data) => {
       return data.map((item, i) => <li key={i}>{item}</li>);
     };
+    const renderPosx = (data) => {
+      return data.map((item, i) => (
+        <Circle x={item} y={item} radius={25} stroke="yellow" key={i}/>
+          
+      ));
+    };
     // const renderPosxCirclle = (data) => {
     //   return data.map((item, i) => <Circle key={i} x={item} y={300} stroke="yellow"></Circle>);
     // };
@@ -88,8 +111,10 @@ export const Task1_2 = () => {
         <Stage width={window.innerWidth} height={window.innerHeight}>
           <Layer>
             <RiceImage />
-            <Circle x={200} y={100} radius={25} stroke="yellow" />
-            {/* {renderPosxCirclle(posxString)} */}
+            {/* <Circle x={200} y={100} radius={25} stroke="yellow" /> */}
+            {/* <RiceCircle2 /> */}
+            {renderPosx(posxString)}
+            
           </Layer>
         </Stage>
       </div>
