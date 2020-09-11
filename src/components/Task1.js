@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import { useHistory } from "react-router";
 
 export const Task1 = () => {
 
+    const { push } = useHistory();
     const [value1, setValue] = useState([0, 10]);
     const handleChange = (event, newValue) => {
       setValue(newValue);
       console.log(newValue)
     };
+    const changePage = () => {
+      push("/Task2")
+    } 
 
     return (
       <div style={{ justifySelf: "center" }}>
+        {/* <button onClick={changePage}> Task 2 </button> */}
         <Typography
           id="range-slider"
           gutterBottom

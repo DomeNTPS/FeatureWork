@@ -19,6 +19,7 @@ export const Task1_2 = () => {
             width={360}
             height={438}
             image={image}
+            x={300}
           />
         );
     };
@@ -75,7 +76,9 @@ export const Task1_2 = () => {
 
     return (
       <div>
-        <button onClick={randomXYW}>random xy </button>
+        <button onClick={randomXYW} style={{marginLeft:300, marginBottom: 100, marginTop: 100}}>
+          random xy{" "}
+        </button>
         {/* <div style={{ display: "flex" }}>
           <ul> x {renderPos(posxString)}</ul>
           <ul> y {renderPos(posyString)}</ul>
@@ -88,7 +91,7 @@ export const Task1_2 = () => {
               console.log(item);
               return (
                 <Circle
-                  x={item.x}
+                  x={item.x + 300}
                   y={item.y}
                   radius={25}
                   stroke="yellow"
