@@ -16,16 +16,16 @@ export const Task1 = () => {
     } 
 
     return (
-      <div style={{ justifySelf: "center" }}>
+      <div style={{ marginLeft: 300 }}>
         {/* <button onClick={changePage}> Task 2 </button> */}
         <Typography
           id="range-slider"
           gutterBottom
-          style={{ marginLeft: 700, marginTop: 100 }}
+          style={{  marginTop: 100 }}
         >
           Slider range
         </Typography>
-        <div style={{ width: 300, marginLeft: 700 }}>
+        <div style={{ width: 300 }}>
           <Slider
             value={value1}
             onChange={handleChange}
@@ -36,7 +36,7 @@ export const Task1 = () => {
             max={10.0}
             step={0.01}
           />
-          {value1}
+          {value1[0]} - {value1[1]} 
         </div>
       </div>
     );

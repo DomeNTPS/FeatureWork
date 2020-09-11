@@ -76,7 +76,7 @@ export const Task1_2 = () => {
 
     return (
       <div>
-        <button onClick={randomXYW} style={{marginLeft:300, marginBottom: 100, marginTop: 100}}>
+        <button onClick={randomXYW} style={{marginLeft:300, marginBottom: 50, marginTop: 100}}>
           random xy{" "}
         </button>
         {/* <div style={{ display: "flex" }}>
