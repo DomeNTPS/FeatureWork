@@ -70,25 +70,16 @@ export const Task1_2 = () => {
         // console.log(posi,'pos')
     }
 
-    // const renderPos = (data) => {
-    //   return data.map((item, i) => <li key={i}>{item}</li>);
-    // };
-
     return (
       <div>
         <button onClick={randomXYW} style={{marginLeft:300, marginBottom: 50, marginTop: 100}}>
           random xy{" "}
         </button>
-        {/* <div style={{ display: "flex" }}>
-          <ul> x {renderPos(posxString)}</ul>
-          <ul> y {renderPos(posyString)}</ul>
-          <ul> w {renderPos(weight)}</ul>
-        </div> */}
         <Stage width={window.innerWidth} height={window.innerHeight}>
           <Layer>
             <RiceImage />
             {posi.map((item, i) => {
-              console.log(item);
+              // console.log(item);
               return (
                 <Circle
                   x={item.x + 300}
