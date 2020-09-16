@@ -56,7 +56,7 @@ export const Task1_2 = ({ filterValue  }) => {
     <div>
       <button
         onClick={randomXYW}
-        style={{ marginLeft: 300, marginBottom: 50, marginTop: 100 }}
+        style={{ marginLeft: 300, marginBottom: 50, marginTop: 70 }}
       >
         random xy
       </button>
