@@ -67,9 +67,8 @@ export const Task1_2 = ({ filterValue  }) => {
         max : {filterValue[1]}
       </div>
       {/* {console.log(filterValue[0])} */}
-      <img
+      <ImageR
         src="http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg"
-        style={{ width: 360, height: 438, marginLeft: 300 }}
       />
       <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
@@ -100,5 +99,10 @@ export const Task1_2 = ({ filterValue  }) => {
 export default Task1_2;
 
 const ImageR = styled.img`
-  width: 300px;
+  width: 360px; 
+  height: 438px; 
+  margin-left: 300;
+  display: flex;
+  position: absolute;
+  margin-left: 300px;
 `;
