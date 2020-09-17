@@ -66,7 +66,6 @@ export const Task1_2 = ({ filterValue  }) => {
         min : {filterValue[0]} <br />
         max : {filterValue[1]}
       </div>
-      {/* {console.log(filterValue[0])} */}
       <ImageR
         src="http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg"
       />
