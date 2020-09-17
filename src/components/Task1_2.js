@@ -81,7 +81,7 @@ export const Task1_2 = ({ filterValue  }) => {
                   x={item.x + 300}
                   y={item.y}
                   radius={5}
-                  stroke="red"
+                  stroke="yellow"
                   key={i}
                 />
               );
