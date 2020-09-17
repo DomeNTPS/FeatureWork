@@ -7,12 +7,52 @@ export const Task1_2 = ({ filterValue  }) => {
   let pos = { x: 0, y: 0, weight: 0 };
   const [posi, setPosi] = React.useState([pos]);
 
-  // const RiceImage = () => {
-  //   const [image] = useImage(
-  //     "http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg"
-  //   );
-  //   return <Image width={360} height={438} image={image} x={300} />;
-  // };
+  class URLImage extends React.Component {
+    state = {
+      image: null,
+    };
+    componentDidMount() {
+      this.loadImage();
+    }
+    componentDidUpdate(oldProps) {
+      if (oldProps.src !== this.props.src) {
+        this.loadImage();
+      }
+    }
+    componentWillUnmount() {
+      this.image.removeEventListener("load", this.handleLoad);
+    }
+    loadImage() {
+      // save to "this" to remove "load" handler on unmount
+      this.image = new window.Image();
+      this.image.src = this.props.src;
+      this.image.addEventListener("load", this.handleLoad);
+    }
+    handleLoad = () => {
+      // after setState react-konva will update canvas and redraw the layer
+      // because "image" property is changed
+      this.setState({
+        image: this.image,
+      });
+      // if you keep same image object during source updates
+      // you will have to update layer manually:
+      // this.imageNode.getLayer().batchDraw();
+    };
+    render() {
+      return (
+        <Image
+          x={this.props.x}
+          y={this.props.y}
+          image={this.state.image}
+          ref={(node) => {
+            this.imageNode = node;
+          }}
+          width={360}
+          height={438}
+        />
+      );
+    }
+  }
 
   const randomXYW = () => {
     let posx = [];
@@ -66,12 +106,16 @@ export const Task1_2 = ({ filterValue  }) => {
         min : {filterValue[0]} <br />
         max : {filterValue[1]}
       </div>
-      <ImageR
+      {/* <ImageR
         src="http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg"
-      />
+      /> */}
       <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
           {/* <RiceImage /> */}
+          <URLImage
+            src="http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg"
+            x={300}
+          />
           {posi
             .filter(
               (item) =>
