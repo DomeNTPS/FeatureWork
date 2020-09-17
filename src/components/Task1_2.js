@@ -7,12 +7,12 @@ export const Task1_2 = ({ filterValue  }) => {
   let pos = { x: 0, y: 0, weight: 0 };
   const [posi, setPosi] = React.useState([pos]);
 
-  const RiceImage = () => {
-    const [image] = useImage(
-      "http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg"
-    );
-    return <Image width={360} height={438} image={image} x={300} />;
-  };
+  // const RiceImage = () => {
+  //   const [image] = useImage(
+  //     "http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg"
+  //   );
+  //   return <Image width={360} height={438} image={image} x={300} />;
+  // };
 
   const randomXYW = () => {
     let posx = [];
