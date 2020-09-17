@@ -3,7 +3,7 @@ import { Stage, Layer, Circle, Image } from "react-konva";
 import useImage from "use-image";
 
 export const Task1_2 = ({ filterValue  }) => {
-  let pos = { x: 0, y: 0, weightps: 0 };
+  let pos = { x: 0, y: 0, weight: 0 };
   const [posi, setPosi] = React.useState([pos]);
 
   const RiceImage = () => {
@@ -72,7 +72,7 @@ export const Task1_2 = ({ filterValue  }) => {
           {posi
             .filter(
               (item) =>
-                 item.weightps < 10 
+                 item.weight < filterValue[1] && item.weight >  filterValue[0] 
             )
             .map((item, i) => {
               // console.log(item);
