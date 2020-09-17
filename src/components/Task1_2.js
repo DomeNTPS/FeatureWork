@@ -1,6 +1,7 @@
 import React from 'react'
 import { Stage, Layer, Circle, Image } from "react-konva";
 import useImage from "use-image";
+import styled from "styled-components";
 
 export const Task1_2 = ({ filterValue  }) => {
   let pos = { x: 0, y: 0, weight: 0 };
@@ -66,13 +67,17 @@ export const Task1_2 = ({ filterValue  }) => {
         max : {filterValue[1]}
       </div>
       {/* {console.log(filterValue[0])} */}
+      <img
+        src="http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg"
+        style={{ width: 360, height: 438, marginLeft: 300 }}
+      />
       <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
-          <RiceImage />
+          {/* <RiceImage /> */}
           {posi
             .filter(
               (item) =>
-                 item.weight < filterValue[1] && item.weight >  filterValue[0] 
+                item.weight < filterValue[1] && item.weight > filterValue[0]
             )
             .map((item, i) => {
               // console.log(item);
@@ -93,3 +98,7 @@ export const Task1_2 = ({ filterValue  }) => {
 };
 
 export default Task1_2;
+
+const ImageR = styled.img`
+  width: 300px;
+`;
