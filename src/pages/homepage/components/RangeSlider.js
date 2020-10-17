@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
-export const RangeSlider = ({ onSlide, mmValue }) => {
+export const RangeSlider = ({ onSlide, rangeValue }) => {
 
-  const handleChange = (event, [min ,max]) => {
+  // set value slider
+  const handleChangeValue = (event, [min, max]) => {
     onSlide(min, max);
-    console.log(min, max);
-  };
- 
+    // console.log(min, max);
+  }; 
 
   return (
     <div style={{ marginLeft: 300 }}>
@@ -17,8 +17,8 @@ export const RangeSlider = ({ onSlide, mmValue }) => {
       </Typography>
       <div style={{ width: 300 }}>
         <Slider
-          value={mmValue}
-          onChange={handleChange}
+          value={rangeValue}
+          onChange={handleChangeValue}
           valueLabelDisplay="auto"
           track="normal"
           defaultValue={10}
@@ -26,7 +26,7 @@ export const RangeSlider = ({ onSlide, mmValue }) => {
           max={10.0}
           step={0.01}
         />
-        {mmValue[0]} - {mmValue[1]}
+        {rangeValue[0]} - {rangeValue[1]}
       </div>
       <br />
     </div>

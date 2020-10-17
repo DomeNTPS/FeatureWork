@@ -12,8 +12,7 @@ function Homepage() {
     return (
       <div>
         <div style ={{marginLeft:300, marginTop: 60}}>min {value[0]} - max {value[1]}</div>
-        <RangeSlider onSlide={handleSlide} mmValue={value}/>
-        {/* <img src="http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg" style={{width:360, height:438, marginLeft:300}}/> */}
+        <RangeSlider onSlide={handleSlide} rangeValue={value}/>
         <Task2 filterValue={value} />
       </div>
     );

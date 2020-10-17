@@ -1,11 +1,9 @@
 import React from 'react'
-import { Stage, Layer, Circle, Image,Node } from "react-konva";
-import useImage from "use-image";
-import styled from "styled-components";
+import { Stage, Layer, Circle, Image } from "react-konva";
 
 export const Task1_2 = ({ filterValue }) => {
   let pos = { x: 0, y: 0, weight: 0 };
-  const [posi, setPosi] = React.useState([pos]);
+  const [position, setPosition] = React.useState([pos]);
   const isFirstTime = React.useRef()
   const srcImage = React.useRef()
 
@@ -16,7 +14,7 @@ export const Task1_2 = ({ filterValue }) => {
       // isFirstTime : true ,
     }
     componentDidMount() {
-      if(this.props.isFirstTime?.current != false){
+      if(this.props.isFirstTime?.current !== false){
         this.loadImage()
       }
     }
@@ -74,43 +72,48 @@ export const Task1_2 = ({ filterValue }) => {
   React.useEffect(()=>{
     console.log('rerender')
   },[])
-  const randomXYW = () => {
-    let posx = [];
-    const minx = 0;
-    const maxx = 360;
+
+  // get random position and weight
+
+  const randomPositionandWeight = () => {
+    let positionX = []; // x position
+    const min = 0;
+    const max = 360;
     for (let index = 0; index < 50; index++) {
-      let randx = Math.floor(minx + Math.random() * (maxx - minx));
-      posx.push(randx);
+      let randx = Math.floor(min + Math.random() * (max - min));
+      positionX.push(randx);
     }
 
     //-------------------------
-    let posy = [];
+    let postionY = []; // y position
     const miny = 0;
     const maxy = 438;
     for (let index = 0; index < 50; index++) {
       let randy = Math.floor(miny + Math.random() * (maxy - miny));
-      posy.push(randy);
+      postionY.push(randy);
     }
 
     //-------------------------
-    let wg = [];
-    const minWg = 0.0;
-    const maxWg = 10.0;
+    let weightRandom = []; // weight
+    const minWieght = 0.0;
+    const maxWeight = 10.0;
     for (let index = 0; index < 50; index++) {
-      let ranWg = (minWg + Math.random() * (maxWg - minWg)).toFixed(2);
-      wg.push(ranWg);
+      let ranWg = (minWieght + Math.random() * (maxWeight - minWieght)).toFixed(
+        2
+      );
+      weightRandom.push(ranWg);
     }
 
     //-------------------------
-    let tempPosition = [];
-    posx.map((posXData, idx) => {
+    let tempPosition = []; // record position and merge in one array
+    positionX.map((posXData, idx) => {
       tempPosition.push({
         x: posXData,
-        y: posy[idx],
-        weight: wg[idx],
+        y: postionY[idx],
+        weight: weightRandom[idx],
       });
     });
-    setPosi(tempPosition);
+    setPosition(tempPosition);
   };
   const renderImage = (isFirstTime)=>{
       return ( <URLImage
@@ -123,24 +126,19 @@ export const Task1_2 = ({ filterValue }) => {
   return (
     <div>
       <button
-        onClick={randomXYW}
+        onClick={randomPositionandWeight}
         style={{ marginLeft: 300, marginBottom: 50, marginTop: 70 }}
       >
-        random xy
+        random position
       </button>
-      {/* {console.log(posi)} */}
       <div style={{ marginLeft: 300, marginBottom: 50 }}>
-        min : {filterValue[0]} <br />
-        max : {filterValue[1]}
+        minvalue : {filterValue[0]} <br />
+        maxvalue : {filterValue[1]}
       </div>
-      {/* <ImageR
-        src="http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg"
-      /> */}
       <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
-          {/* <RiceImage /> */}
-          {renderImage(isFirstTime,srcImage)}
-          {posi
+          {renderImage(isFirstTime, srcImage)}
+          {position
             .filter(
               (item) =>
                 item.weight < filterValue[1] && item.weight > filterValue[0]
@@ -165,11 +163,3 @@ export const Task1_2 = ({ filterValue }) => {
 
 export default Task1_2;
 
-const ImageR = styled.img`
-  width: 360px; 
-  height: 438px; 
-  margin-left: 300;
-  display: flex;
-  position: absolute;
-  margin-left: 300px;
-`;
